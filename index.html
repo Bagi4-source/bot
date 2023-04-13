@@ -40,45 +40,223 @@
             margin: 0 auto;
         }
 
-        button {
+        .likes {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+
+        .likes .active {
+            background: var(--tg-theme-button-color);
+        }
+
+        .slideshow-container button {
             border: 0;
             border-radius: 5px;
-            margin-top: 50px;
+            margin-top: 1rem;
             height: 60px;
-            width: 200px;
+            width: 150px;
             font-size: 1.2rem;
             cursor: pointer;
             color: var(--tg-theme-button-text-color);
-            background: var(--tg-theme-button-color);
+            background: var(--tg-theme-secondary-bg-color);
+        }
+
+        .mySlides {
+            display: none
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 45%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
         }
     </style>
 </head>
 <body>
 <div id="main">
-    <h1>Заголовок</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur cupiditate dicta ea in itaque minima
-        mollitia perferendis repellat, sint totam velit voluptas voluptatibus. Aperiam dolores odio sapiente tempore
-        veritatis. Aperiam asperiores at atque autem, consectetur enim illum labore minima molestiae molestias,
-        necessitatibus non obcaecati odio officiis placeat quae quam quis reiciendis repellat similique tempore
-        temporibus unde ut veniam voluptate? Architecto aspernatur atque, aut, debitis delectus doloribus excepturi
-        facere impedit necessitatibus reiciendis, tempore ut. Adipisci amet atque consectetur cupiditate deleniti
-        doloribus dolorum ducimus ea eius ipsam minima natus, nemo nesciunt nostrum porro quaerat quos ratione
-        reiciendis temporibus veniam! Ab accusamus animi at aut cum delectus deleniti dicta dolorem ea eius eos error
-        eum eveniet excepturi fugiat illum iusto laborum nemo obcaecati optio, perferendis quasi quia, quisquam veniam
-        vitae! Ad, asperiores culpa cupiditate doloremque eaque expedita id iste laudantium necessitatibus soluta. Amet
-        aperiam deserunt, distinctio dolorem est et explicabo, id laudantium modi placeat quam repellat sit velit. Animi
-        aspernatur consectetur dolorum eum ipsa, ipsum necessitatibus nulla, obcaecati quasi sequi sit vel. Aut
-        blanditiis cum cupiditate dicta doloremque hic id inventore minima, nemo nobis perferendis, repudiandae tempora
-        voluptatem! Consequatur, dolor dolore explicabo facilis magnam non nulla placeat praesentium quae, recusandae
-        reiciendis repellat sapiente sit sunt vel! Alias assumenda distinctio dolorum error illum ipsam laboriosam non,
-        recusandae sed similique? Eligendi enim illo illum in quo? Aliquam aut autem cumque delectus dolorem earum enim
-        esse, et, eum eveniet excepturi explicabo fugit ipsa ipsam laboriosam minima nesciunt nisi odit quas quibusdam
-        repellendus sunt suscipit unde! Aut blanditiis cupiditate esse ipsam iusto modi possimus soluta. Ad cumque
-        deleniti enim esse magni molestias neque porro provident, sed voluptates! Ab autem deserunt dicta eos omnis
-        perspiciatis sapiente tempora. Ab alias asperiores consequuntur doloremque error eum natus nobis tempora tenetur
-        veniam! Assumenda dicta esse fugiat minus sed. Fugit, incidunt, laudantium?</p>
-    <button id="finish">Завершить</button>
+    <h1>Мироток</h1>
+    <div class="slider">
+        <div class="image" data-id="1">
+            <img src="" alt="">
+        </div>
+        <div class="image" data-id="1">
+            <img src="" alt="">
+        </div>
+        <div class="image" data-id="1">
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="slideshow-container">
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+        <div class="likes">
+            <button id="like" onclick="like(true)">Like</button>
+            <button id="dislike" onclick="like(false)">Dislike</button>
+        </div>
+    </div>
 </div>
+<script>
+    let slides = [
+        {
+            image: 'https://www.iguides.ru/upload/medialibrary/9f8/9f8fdff471b7d281f81f694c100b5adc.png',
+            data: '',
+            like: false
+        },
+        {
+            image: 'https://avatars.mds.yandex.net/i?id=410557de4e75d41af00bb51be828290b_l-4620768-images-thumbs&n=27&h=480&w=480',
+            data: '',
+            like: false
+        },
+        {
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyP-EPxLLd1DhWIGHhl-JhFJRZofodmmeU1Du2dTjMw&s',
+            data: '',
+            like: false
+        },
+    ];
+
+    function add_slide(index, len, src, text) {
+        let slider = document.querySelector('.slideshow-container');
+        let node = document.createElement('div');
+        node.classList.add('mySlides', 'fade');
+        node.innerHTML = `<div class="numbertext">${index} / ${len}</div>
+            <img src="${src}"
+                 style="width:100%">
+            <div class="text">${text}</div>`;
+        slider.prepend(node);
+    }
+
+    function generateSlider() {
+        for (let i in slides) {
+            let slide = slides[i];
+            add_slide(parseInt(i) + 1, slides.length, slide.image, slide.data);
+        }
+    }
+
+    generateSlider();
+</script>
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+
+    function like(status) {
+        let element1 = document.querySelector(status ? '#like' : '#dislike');
+        let element2 = document.querySelector(!status ? '#like' : '#dislike');
+        element1.classList.add('active');
+        element2.classList.remove('active');
+        slides[slideIndex - 1].like = status;
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
     let tg = window.Telegram.WebApp;
@@ -90,6 +268,20 @@
         }));
         tg.close();
     })
+
+    function next_image() {
+        if (index + 1 < $('.question').length) {
+            index += 1;
+            display_questions(index);
+        }
+    }
+
+    function prev_image() {
+        if (index - 1 >= 0) {
+            index -= 1;
+            display_questions(index);
+        }
+    }
 </script>
 </body>
 </html>
