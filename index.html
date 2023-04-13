@@ -48,13 +48,8 @@
             width: 200px;
             font-size: 1.2rem;
             cursor: pointer;
-            transition: all 500ms ease;
             color: var(--tg-theme-button-text-color);
             background: var(--tg-theme-button-color);
-        }
-
-        button:hover {
-            background: var(--tg-theme-secondary-bg-color);
         }
     </style>
 </head>
@@ -85,5 +80,14 @@
     <button id="finish">Завершить</button>
 </div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    let tg = window.Telegram.WebAPP;
+    let finish = document.querySelector('#finish');
+    finish.addEventListener('click', () => {
+        tg.sendData(JSON.stringify({
+            'hello': 'hello'
+        }));
+    })
+</script>
 </body>
 </html>
