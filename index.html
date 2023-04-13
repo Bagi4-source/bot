@@ -178,7 +178,7 @@
     </div>
 </div>
 <script>
-    let slides = [
+    let images = [
         {
             image: 'https://www.iguides.ru/upload/medialibrary/9f8/9f8fdff471b7d281f81f694c100b5adc.png',
             data: '',
@@ -208,9 +208,9 @@
     }
 
     function generateSlider() {
-        for (let i in slides) {
-            let slide = slides[i];
-            add_slide(parseInt(i) + 1, slides.length, slide.image, slide.data);
+        for (let i = images.length - 1; i >= 0; i--) {
+            let slide = images[i];
+            add_slide(parseInt(i) + 1, images.length, slide.image, slide.data);
         }
     }
 
@@ -230,17 +230,17 @@
 
 
     function like(status) {
-        let element1 = document.querySelector(status ? '#like' : '#dislike');
-        let element2 = document.querySelector(!status ? '#like' : '#dislike');
-        element1.classList.add('active');
-        element2.classList.remove('active');
-        slides[slideIndex - 1].like = status;
+        document.querySelectorAll('.likes > button').forEach((el) => {
+            el.classList.remove('active');
+        })
+        let element = document.querySelector(status ? '#like' : '#dislike');
+        element.classList.add('active');
+        images[slideIndex - 1].like = status;
     }
 
     function showSlides(n) {
         let i;
         let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
         if (n > slides.length) {
             slideIndex = 1
         }
@@ -250,11 +250,8 @@
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
         slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
+        like(images[slideIndex - 1].like);
     }
 </script>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
