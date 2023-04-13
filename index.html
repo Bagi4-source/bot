@@ -18,10 +18,11 @@
         body {
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
-            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-secondary-bg-color);
         }
 
         #main {
+            background: var(--tg-theme-bg-color);
             width: 100%;
             text-align: center;
             padding: 20px;
@@ -30,9 +31,11 @@
         h1 {
             margin-bottom: 10px;
             margin-top: 50px;
+            color: var(--tg-theme-text-color);
         }
 
         p {
+            color: var(--tg-theme-hint-color);
             width: 350px;
             margin: 0 auto;
         }
@@ -46,8 +49,8 @@
             font-size: 1.2rem;
             cursor: pointer;
             transition: all 500ms ease;
-            color: var(--tg-theme-button-color);
-            background: var(--tg-theme-button-text-color);
+            color: var(--tg-theme-button-text-color);
+            background: var(--tg-theme-button-color);
         }
 
         button:hover {
