@@ -32,7 +32,11 @@
     </div>
     <div class="error">Error text</div>
 </div>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+
     let images = [
         {
             id: '1',
@@ -132,6 +136,16 @@
             createStep2();
     }
 
+    function clearImage(id) {
+        document.querySelectorAll('.image').forEach((e) => {
+            if (e.dataset.id && e.dataset.id === id) {
+                e.style.backgroundImage = '';
+                e.dataset.id = '';
+                e.querySelector('.placeholder').style.display = 'block';
+            }
+        });
+    }
+
     function createStep3() {
         let new_images = [];
         for (let i in images) {
@@ -152,9 +166,10 @@
         document.querySelector('.images').classList.remove('hide');
         document.querySelectorAll('.image').forEach((el) => {
             el.addEventListener('click', () => {
+                clearImage(images[slideIndex - 1].id);
                 el.querySelector('.placeholder').style.display = 'none';
                 el.dataset.id = images[slideIndex - 1].id;
-                el.style.background = `url('${images[slideIndex - 1].image}')`;
+                el.style.backgroundImage = `url('${images[slideIndex - 1].image}')`;
                 el.style.backgroundRepeat = 'no-repeat';
                 el.style.backgroundSize = 'cover';
                 el.style.backgroundPosition = 'center center';
@@ -182,8 +197,10 @@
             else
                 results.push(el.dataset.id);
         })
-        if (results.length === 5)
-            console.log(results);
+        if (results.length === 5) {
+            tg.sendData(JSON.stringify(results));
+            tg.close();
+        }
     }
 </script>
 <script>
@@ -222,32 +239,6 @@
         }
         slides[slideIndex - 1].style.display = "block";
         like(images[slideIndex - 1].like);
-    }
-</script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-    let tg = window.Telegram.WebApp;
-    tg.expand();
-    let finish = document.querySelector('#finish');
-    finish.addEventListener('click', () => {
-        tg.sendData(JSON.stringify({
-            hello: 'hello'
-        }));
-        tg.close();
-    })
-
-    function next_image() {
-        if (index + 1 < $('.question').length) {
-            index += 1;
-            display_questions(index);
-        }
-    }
-
-    function prev_image() {
-        if (index - 1 >= 0) {
-            index -= 1;
-            display_questions(index);
-        }
     }
 </script>
 </body>

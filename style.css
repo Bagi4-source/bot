@@ -183,6 +183,7 @@ img {
     padding: 30px;
     font-size: 1.2rem;
     font-weight: 500;
+    color: var(--tg-theme-text-color);
     background: var(--tg-theme-bg-color);
     display: none;
     transition: all 500ms ease;
