@@ -6,11 +6,13 @@
     box-sizing: border-box;
 }
 
+html {
+    background: var(--tg-theme-bg-color);
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    background: var(--tg-theme-bg-color);
-    height: 100vh;
 }
 
 #main {
