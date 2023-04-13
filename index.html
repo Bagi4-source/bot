@@ -48,7 +48,7 @@
             flex-direction: row;
         }
 
-        .likes button .active {
+        .likes button.active {
             color: var(--tg-theme-button-text-color);
             background: var(--tg-theme-button-color);
         }
@@ -172,10 +172,10 @@
     <div class="slideshow-container">
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
-        <div class="likes">
-            <button id="like" onclick="like(true)">Нравится</button>
-            <button id="dislike" onclick="like(false)">Не нравится</button>
-        </div>
+    </div>
+    <div class="likes">
+        <button id="like" onclick="like(true)">Нравится</button>
+        <button id="dislike" onclick="like(false)">Не нравится</button>
     </div>
 </div>
 <script>
