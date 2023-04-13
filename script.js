@@ -34,7 +34,7 @@ let images = [
     },
     {
         id: 6,
-        image: 'https://www.imgonline.com.ua/examples/bee-on-daisy.jpg',
+        image: 'https://i.pinimg.com/originals/b9/59/f1/b959f1670d2631589643575de5a782b7.jpg',
         data: '',
         like: false
     },
