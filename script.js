@@ -1,44 +1,7 @@
 let tg = window.Telegram.WebApp;
 tg.expand();
 
-let images = [
-    {
-        id: "1",
-        image: 'https://www.iguides.ru/upload/medialibrary/9f8/9f8fdff471b7d281f81f694c100b5adc.png',
-        data: '',
-        like: false
-    },
-    {
-        id: "2",
-        image: 'https://avatars.mds.yandex.net/i?id=410557de4e75d41af00bb51be828290b_l-4620768-images-thumbs&n=27&h=480&w=480',
-        data: '',
-        like: false
-    },
-    {
-        id: "3",
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxyP-EPxLLd1DhWIGHhl-JhFJRZofodmmeU1Du2dTjMw&s',
-        data: '',
-        like: false
-    },
-    {
-        id: "4",
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnaoJ7Z6GFOEMGi5qH3Q50yx-5HLkty7uO9rJ8yiQ&s',
-        data: '',
-        like: false
-    },
-    {
-        id: "5",
-        image: 'https://avatars.mds.yandex.net/i?id=0eaa142d7202ac9bbd26ac279e7ae159_l-4898876-images-thumbs&n=27&h=384&w=480',
-        data: '',
-        like: false
-    },
-    {
-        id: "6",
-        image: 'https://i.pinimg.com/originals/b9/59/f1/b959f1670d2631589643575de5a782b7.jpg',
-        data: '',
-        like: false
-    },
-];
+get_images();
 
 function add_slide(index, len, src, text) {
     let slider = document.querySelector('.slideshow-container');
