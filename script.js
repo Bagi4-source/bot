@@ -58,7 +58,7 @@ function step2() {
         count += slide.like ? 1 : 0;
     }
     if (count < 5) {
-        return send_error('Выберете больше 4 картинок');
+        return send_error('Выберете больше 4 картинок!');
     } else
         createStep2();
 }
@@ -111,7 +111,7 @@ function step3() {
         count += slide.like ? 1 : 0;
     }
     if (count !== 5) {
-        return send_error('Выберете только 5 картинок');
+        return send_error('Выберете только 5 картинок!');
     } else
         createStep3();
 }
@@ -120,10 +120,14 @@ function finish() {
     let results = []
     document.querySelectorAll('.image').forEach((el) => {
         if (results.indexOf(el.dataset.id) !== -1)
-            return send_error('Картинки не должны повторяться')
+            return send_error('Картинки не должны повторяться!')
         else
             results.push(el.dataset.id);
     })
+    for (let i in results){
+        if (!results[i])
+            return send_error('Нужно заполнить все номера!')
+    }
     if (results.length === 5) {
         tg.sendData(JSON.stringify(results));
         tg.close();
