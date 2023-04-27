@@ -8,8 +8,9 @@ function add_slide(index, len, src, text) {
     let node = document.createElement('div');
     node.classList.add('mySlides', 'fade');
     node.innerHTML = `<div class="numbertext">${index} / ${len}</div>
-            <img src="${src}">
-            <div class="text">${text}</div>`;
+            <a href="${src}" data-fancybox data-caption="${text}">
+                <img class="slider-image" src="${src}" />
+            </a>`;
     slider.prepend(node);
 }
 
