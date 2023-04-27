@@ -125,7 +125,7 @@ img {
 }
 
 .slideshow-container img {
-    height: 270px;
+    height: 40vh;
     width: 100%;
     object-fit: cover;
 }
