@@ -125,7 +125,7 @@ function get_images() {
     for (let i in captions) {
         images.push({
             id: (parseInt(i) + 1).toString(),
-            image: `test_images/${i}.jpg`,
+            image: `test_images/${i + 1}.jpg`,
             data: captions[i],
             like: false
         });
