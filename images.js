@@ -122,10 +122,10 @@ function shuffle(array) {
 }
 
 function get_images() {
-    for (let i in images_source) {
+    for (let i in captions) {
         images.push({
             id: (parseInt(i) + 1).toString(),
-            image: images_source[i],
+            image: `test_images/${i}.jpg`,
             data: captions[i],
             like: false
         });
