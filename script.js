@@ -1,6 +1,14 @@
 let tg = window.Telegram.WebApp;
 tg.expand();
 
+let showed = [];
+
+function add_showed(n) {
+    if (showed.indexOf(n) === -1) {
+        showed.push(n);
+    }
+}
+
 get_images();
 
 function add_slide(index, len, src, text) {
@@ -58,10 +66,11 @@ function step2() {
         let slide = images[i];
         count += slide.like ? 1 : 0;
     }
-    if (count < 5) {
+    if (count < 5)
         return send_error('Выберете больше 4 картинок!');
-    } else
-        createStep2();
+    if (showed.length !== 49)
+        return send_error('Посмотрите все картинки!');
+    createStep2();
 }
 
 function clearImage(id) {
@@ -125,7 +134,7 @@ function finish() {
         else
             results.push(el.dataset.id);
     })
-    for (let i in results){
+    for (let i in results) {
         if (!results[i])
             return send_error('Нужно заполнить все номера!')
     }
@@ -137,9 +146,12 @@ function finish() {
 
 let slideIndex = 1;
 showSlides(slideIndex);
+add_showed(slideIndex);
 
 function plusSlides(n) {
+
     showSlides(slideIndex += n);
+    add_showed(slideIndex);
 }
 
 function currentSlide(n) {
