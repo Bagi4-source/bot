@@ -52,11 +52,12 @@ function createStep2() {
             new_images.push(slide);
         }
     }
+    document.querySelector('#indicator').classList.remove('hide');
     images = new_images;
     generateSlider();
     slideIndex = 1;
     showSlides(1);
-    document.querySelector('#task').textContent = 'Выберете 5 наиболее понравившихся картинок';
+    document.querySelector('#task').textContent = 'Выберите 5 наиболее понравившихся картинок';
     document.querySelector('.finish > button').setAttribute('onclick', 'step3()');
 }
 
@@ -66,10 +67,10 @@ function step2() {
         let slide = images[i];
         count += slide.like ? 1 : 0;
     }
-    if (count < 5)
-        return send_error('Выберете больше 4 картинок!');
     if (showed.length !== 49)
         return send_error('Посмотрите все картинки!');
+    if (count < 5)
+        return send_error('Выберите больше 4 картинок!');
     createStep2();
 }
 
@@ -84,6 +85,7 @@ function clearImage(id) {
 }
 
 function createStep3() {
+    document.querySelector('#indicator').classList.add('hide');
     let new_images = [];
     for (let i in images) {
         let slide = images[i];
@@ -121,7 +123,7 @@ function step3() {
         count += slide.like ? 1 : 0;
     }
     if (count !== 5) {
-        return send_error('Выберете только 5 картинок!');
+        return send_error('Выберите только 5 картинок!');
     } else
         createStep3();
 }
@@ -149,9 +151,7 @@ showSlides(slideIndex);
 add_showed(slideIndex);
 
 function plusSlides(n) {
-
     showSlides(slideIndex += n);
-    add_showed(slideIndex);
 }
 
 function currentSlide(n) {
@@ -166,17 +166,34 @@ function like(status) {
     let element = document.querySelector(status ? '#like' : '#dislike');
     element.classList.add('active');
     images[slideIndex - 1].like = status;
+    let count = 0;
+    for (let i in images) {
+        if (images[i].like)
+            count += 1;
+    }
+    document.querySelector('#indicator').innerText = `${count} / 5`;
+    if (count === 5) {
+        document.querySelector('#indicator').style.backgroundColor = "#a3ff70";
+        document.querySelector('#indicator').style.color = "#000";
+    } else {
+        document.querySelector('#indicator').style.backgroundColor = "#ff5959";
+        document.querySelector('#indicator').style.color = "#fff";
+    }
+
 }
 
 function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("mySlides");
     if (n > slides.length) {
-        slideIndex = 1
+        slideIndex -= 1
+        return
     }
     if (n < 1) {
-        slideIndex = slides.length
+        slideIndex += 1
+        return;
     }
+    add_showed(slideIndex);
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }

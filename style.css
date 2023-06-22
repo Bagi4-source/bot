@@ -219,3 +219,12 @@ img {
     flex-wrap: nowrap;
     flex-direction: row;
 }
+
+#indicator {
+    color: #fff;
+    border-radius: 10px;
+    width: 70px;
+    padding: 10px;
+    margin: 10px auto;
+    font-weight: 600;
+}
