@@ -98,7 +98,7 @@ function createStep3() {
     generateSlider();
     slideIndex = 1;
     showSlides(1);
-    document.querySelector('#task').innerHTML = 'Разложите картинки от 1 до 5<br>(5 - нравится больше, 1 - меньше)<br>Для выбора кликайте по плиткам';
+    document.querySelector('#task').innerHTML = 'Разложите картинки от 1 до 5<br>(1 - нравится больше, 5 - меньше)<br>Для выбора кликайте по плиткам';
     document.querySelector('.finish > button').setAttribute('onclick', 'finish()');
 
     document.querySelector('.likes').remove();
